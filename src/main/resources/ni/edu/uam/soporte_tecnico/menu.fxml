@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.soporte_tecnico.controller.MenuController">
+    <children>
+        <Label layoutX="107.0" layoutY="30.0" text="Sistema De Soporte Tecnico">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <Label layoutX="177.0" layoutY="68.0" text="Gestion de clientes y solicitudes " />
+        <Separator layoutX="36.0" layoutY="101.0" prefHeight="0.0" prefWidth="485.0" />
+        <Button fx:id="btnClientes" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" onAction="#abrirClientes" prefHeight="48.0" prefWidth="137.0" text="Clientes" />
+        <Button fx:id="btnSolicitud" layoutX="197.0" layoutY="200.0" mnemonicParsing="false" onAction="#abrirSolicitud" prefHeight="48.0" prefWidth="137.0" text="Solicitud Servicios" />
+        <Button fx:id="btnSalir" layoutX="197.0" layoutY="256.0" mnemonicParsing="false" onAction="#salir" prefHeight="48.0" prefWidth="137.0" text="Salir" />
+    </children>
+</AnchorPane>
