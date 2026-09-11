@@ -59,12 +59,7 @@ public class Solicitud {
                 "Cliente 3"
         );
 
-        tipoServicioCombo.getItems().addAll(
-                "Soporte técnico",
-                "Mantenimiento",
-                "Instalación",
-                "Configuración",
-                "Reparación"
+        tipoServicioCombo.getItems().addAll("Soporte técnico","Mantenimiento", "Instalación", "Configuración", "Reparación"
         );
     }
 

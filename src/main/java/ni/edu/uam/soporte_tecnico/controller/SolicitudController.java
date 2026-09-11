@@ -20,13 +20,13 @@ public class SolicitudController {
     private ComboBox<String> clienteCombo;
 
     @FXML
-    private TextField correoField;
+    private TextField txtCorreo;
 
     @FXML
-    private TextField tipoClienteField;
+    private TextField txtTipoCliente;
 
     @FXML
-    private TextField asuntoField;
+    private TextField txtAsunto;
 
     @FXML
     private ComboBox<String> tipoServicioCombo;
@@ -44,28 +44,29 @@ public class SolicitudController {
     private TextArea descripcionArea;
 
     @FXML
-    private TextField archivoField;
+    private TextField txtArchivo;
 
     @FXML
-    private TextField evidenciasField;
+    private TextField txtEvidencia;
 
 
     @FXML
     public void initialize() {
 
-        clienteCombo.getItems().addAll(
-                "Cliente 1",
-                "Cliente 2",
-                "Cliente 3"
+        clienteCombo.getItems().addAll("Cliente 1", "Cliente 2", "Cliente 3"
         );
 
         tipoServicioCombo.getItems().addAll(
-                "Soporte técnico",
-                "Mantenimiento",
-                "Instalación",
-                "Configuración",
-                "Reparación"
+                "Soporte técnico", "Mantenimiento", "Instalación", "Configuración", "Reparación"
         );
+
+        // Agrupar los RadioButton para que solo se pueda seleccionar uno
+        javafx.scene.control.ToggleGroup grupoPrioridad =
+                new javafx.scene.control.ToggleGroup();
+
+        bajaRadio.setToggleGroup(grupoPrioridad);
+        mediaRadio.setToggleGroup(grupoPrioridad);
+        altaRadio.setToggleGroup(grupoPrioridad);
     }
 
 
@@ -83,7 +84,7 @@ public class SolicitudController {
         File archivo = fileChooser.showOpenDialog(stage);
 
         if (archivo != null) {
-            archivoField.setText(archivo.getAbsolutePath());
+            txtArchivo.setText(archivo.getAbsolutePath());
         }
     }
 
@@ -102,7 +103,7 @@ public class SolicitudController {
         File carpeta = directoryChooser.showDialog(stage);
 
         if (carpeta != null) {
-            evidenciasField.setText(carpeta.getAbsolutePath());
+            txtEvidencia.setText(carpeta.getAbsolutePath());
         }
     }
 
@@ -115,10 +116,7 @@ public class SolicitudController {
         }
 
         mostrarAlerta(
-                Alert.AlertType.INFORMATION,
-                "Solicitud guardada",
-                "Registro exitoso",
-                "La solicitud se ha guardado correctamente."
+                Alert.AlertType.INFORMATION, "Solicitud guardada", "Registro exitoso", "La solicitud se ha guardado correctamente."
         );
     }
 
@@ -131,10 +129,7 @@ public class SolicitudController {
         }
 
         mostrarAlerta(
-                Alert.AlertType.INFORMATION,
-                "Solicitud creada",
-                "Operación exitosa",
-                "La solicitud de servicio ha sido creada correctamente."
+                Alert.AlertType.INFORMATION, "Solicitud creada", "Operación exitosa", "La solicitud de servicio ha sido creada correctamente."
         );
     }
 
@@ -144,9 +139,9 @@ public class SolicitudController {
 
         clienteCombo.getSelectionModel().clearSelection();
 
-        correoField.clear();
-        tipoClienteField.clear();
-        asuntoField.clear();
+        txtCorreo.clear();
+        txtTipoCliente.clear();
+        txtAsunto.clear();
 
         tipoServicioCombo.getSelectionModel().clearSelection();
 
@@ -156,8 +151,8 @@ public class SolicitudController {
 
         descripcionArea.clear();
 
-        archivoField.clear();
-        evidenciasField.clear();
+        txtArchivo.clear();
+        txtEvidencia.clear();
     }
 
 
@@ -177,88 +172,93 @@ public class SolicitudController {
         if (clienteCombo.getValue() == null) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe seleccionar un cliente."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe seleccionar un cliente."
             );
 
             clienteCombo.requestFocus();
             return false;
         }
 
-        if (asuntoField.getText().trim().isEmpty()) {
+
+        if (txtCorreo.getText().trim().isEmpty()) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe ingresar el asunto de la solicitud."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe ingresar el correo del cliente."
             );
 
-            asuntoField.requestFocus();
             return false;
         }
+
+
+        if (txtTipoCliente.getText().trim().isEmpty()) {
+
+            mostrarAlerta(
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe ingresar el tipo de cliente."
+            );
+
+            return false;
+        }
+
+
+        if (txtAsunto.getText().trim().isEmpty()) {
+
+            mostrarAlerta(
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe ingresar el asunto de la solicitud."
+            );
+
+            txtAsunto.requestFocus();
+            return false;
+        }
+
 
         if (tipoServicioCombo.getValue() == null) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe seleccionar el tipo de servicio."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe seleccionar el tipo de servicio."
             );
 
             tipoServicioCombo.requestFocus();
             return false;
         }
 
+
         if (!bajaRadio.isSelected()
                 && !mediaRadio.isSelected()
                 && !altaRadio.isSelected()) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe seleccionar una prioridad."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe seleccionar una prioridad."
             );
 
             return false;
         }
 
+
         if (descripcionArea.getText().trim().isEmpty()) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe ingresar una descripción del problema."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe ingresar una descripción del problema."
             );
 
             descripcionArea.requestFocus();
             return false;
         }
 
-        if (archivoField.getText().trim().isEmpty()) {
+
+        if (txtArchivo.getText().trim().isEmpty()) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe seleccionar un archivo adjunto."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe seleccionar un archivo adjunto."
             );
 
             return false;
         }
 
-        if (evidenciasField.getText().trim().isEmpty()) {
+
+        if (txtEvidencia.getText().trim().isEmpty()) {
 
             mostrarAlerta(
-                    Alert.AlertType.WARNING,
-                    "Validación",
-                    "Campo obligatorio",
-                    "Debe seleccionar una carpeta de evidencias."
+                    Alert.AlertType.WARNING, "Validación", "Campo obligatorio", "Debe seleccionar una carpeta de evidencias."
             );
 
             return false;

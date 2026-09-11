@@ -13,8 +13,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                HelloApplication.class.getResource(
-                        "/ni/edu/uam/soporte_tecnico/menu.fxml"
+                HelloApplication.class.getResource("/ni/edu/uam/soporte_tecnico/menu.fxml"
                 )
         );
 
