@@ -65,7 +65,7 @@ public class Solicitud {
 
 
     @FXML
-    private void seleccionarArchivo(ActionEvent event) {
+    private void seleccionarDocuemento(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
 

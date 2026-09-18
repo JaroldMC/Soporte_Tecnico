@@ -30,7 +30,7 @@
                 <ComboBox fx:id="tipoClienteCombo" maxWidth="Infinity" promptText="Seleccione una opción" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                 <Label text="Documento" wrapText="true" GridPane.rowIndex="4" />
                 <TextField fx:id="documentoField" editable="false" promptText="Ningún archivo seleccionado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Button onAction="#seleccionarDocumento" text="Examinar..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <Button onAction="#seleccionarDocumento" text="Seleccionar Documento " GridPane.columnIndex="2" GridPane.rowIndex="4" />
                 <Label text="Directorio del cliente " GridPane.rowIndex="5" />
                 <TextField fx:id="directorioField" editable="false" promptText="Ninguna carpeta seleccionada" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Button onAction="#seleccionarDirectorio" text="Seleccionar..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
@@ -48,7 +48,7 @@
                 <Button onAction="#guardar" prefWidth="105.0" text="Guardar" />
                 <Button onAction="#crearSolicitud" prefWidth="135.0" text="Crear solicitud" />
                 <Button onAction="#limpiar" prefWidth="105.0" text="Limpiar" />
-                <Button onAction="#cerrar" prefWidth="105.0" text="Cerrar" />
+                <Button fx:id="btnMenuPrincipal" onAction="#abrirMenu" prefWidth="105.0" text="Menu princiapl" />
             </HBox>
         </VBox>
     </content>

@@ -3,7 +3,7 @@ package ni.edu.uam.soporte_tecnico.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public final class RepositorioDatos {
+public final class          RepositorioDatos {
 
     private static final ObservableList<Cliente> CLIENTES =
             FXCollections.observableArrayList();
